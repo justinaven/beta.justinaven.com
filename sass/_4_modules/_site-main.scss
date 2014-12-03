@@ -1,0 +1,24 @@
+//
+//   @site-main
+// --------------------------------------------------------
+//  _5_sections/_site-main.scss
+// --------------------------------------------------------
+//
+//  main content
+//
+// --------------------------------------------------------
+
+.site-main {
+	padding: 0; 
+}
+
+
+section {
+ 	background: $body-color;
+ 	box-shadow: inset 0 0 3px rgba(0,0,0,.4);
+ 	margin: $spacing-xl auto;
+	padding: $spacing-l 0; 
+	.post-title {
+		font-weight: bold;
+	}
+}

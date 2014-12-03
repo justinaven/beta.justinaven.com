@@ -1,0 +1,216 @@
+//
+//   @site-header
+// --------------------------------------------------------
+//  _5_sections/_site-header.scss
+// --------------------------------------------------------
+//
+//  Site-wide header
+//
+// --------------------------------------------------------
+
+.site-header {
+	box-shadow: 0 1px 3px rgba(0,0,0,.3);
+ 	@extend %clearfix;
+ 	background: color('orange');
+ 	.container { 
+ 		position: relative;
+ 		text-align: right;
+ 	}
+
+	.primary-nav .nav {
+		list-style:none;
+		margin-bottom: -$spacing-m;
+		position:relative;
+		> li {
+		  display: inline-block;
+		  position:relative;
+			> a {
+				color: color('silver');
+				display: inline-block;
+				font-size: 14px;
+				font-weight: bold;
+				padding: $spacing-m;
+				position:relative;
+				text-decoration: none;
+				transition: all .3s ease-in-out;
+				&:hover {
+				  color: color('blue-gray');
+				}
+			}
+		}
+	}
+
+	@include media('screen and (min-width: 600px)', false) {
+		height: 58px;
+	 	.container { 
+	 		height: 100%;
+	 	}
+		.primary-nav .nav {
+			height:100%;
+			>li {
+				height:100%;
+				> a {
+					font-size: 18px;
+					height:100%;
+					&:before {
+						content: '';
+						display: inline-block;
+						height:100%;
+						position: relative;
+						vertical-align: middle;
+						width: 0;
+					}
+					&:last-child{margin-right: 0;}
+					&:hover { background: color('silver'); }
+				}
+			}
+		}
+	}
+}
+
+.secondary-nav.site-nav,
+.secondary-search { display: none;}
+
+@include media('screen and (max-width: 600px)', false) {
+	.js {
+		.site-header {
+			height: 58px;
+			.container {height:100%;}
+			.primary-nav,
+			.primary-search {display: none;}
+		}
+	}
+
+	.secondary-nav.site-nav,
+	.secondary-search {
+		background: color('navy');
+		display: block;
+		max-height: 0;
+		opacity: 0;
+		overflow: hidden;
+		transition: all .3s ease-in-out;
+		width:100%;
+		&.active {
+			max-height: 500px;
+			opacity: 1;
+		}
+	}
+	.secondary-nav {
+		a {
+			color: color('orange-l');
+			display: block;
+			font-size: 20px;
+			font-weight: bold;
+			padding: $spacing-l;
+			text-align: center;
+			text-decoration: none;
+			width: 100%;
+			&:hover { 
+				color: color('silver');
+				background: lighten(color('navy'),5%);
+			}
+		}
+		li {
+			border-top: 1px solid darken(color('silver'),50%);
+			&:first-child {border-top: none;}
+		}
+	}
+	.secondary-search {
+		form {padding: $spacing-l;}
+		input {
+			background: color('silver');
+			border: none;
+			padding: $spacing-xxs $spacing-s;
+		}
+		label {display: none;}
+	}
+
+	.secondary-nav-button,
+	.secondary-search-button {
+		background: transparent url(../img/menu-icon.png) no-repeat center center;
+		cursor: pointer;
+		display: inline-block;
+		height:100%;
+		margin: 0 $spacing-s;
+		position: relative;
+		width:30px;
+	} 
+	.secondary-nav-button {	margin-right: 0; }
+	.secondary-search-button { background-image: url(../img/search-icon.png); }
+}
+
+
+
+
+//   @branding
+// --------------------------------------------------------
+//  The logo & (optional) wordmark
+//
+//  This would be setup like this
+//
+//  <a href="/" class="branding">
+//    <img src="logo.svg" class="branding__logo" alt="My Company">
+//    <h1 class="branding__wordmark">My Company</h1>
+//  </a>
+// --------------------------------------------------------
+
+a.branding {
+ 	float: left;
+	color: color('silver');
+}
+
+.branding__logo {
+	// padding: $spacing-m $spacing-m $spacing-m 0;
+	height: 75px;
+	width: auto;
+	margin-bottom: -17px;
+	position: relative;
+	z-index: 30;
+
+	// @include media('screen and (min-width: 480px)', false) {
+	// 	padding:0 $spacing-l 0 0;
+	// }
+
+}
+
+.branding__wordmark {
+	left:-9999px;
+	position: absolute;
+	top:-9999px;
+}
+
+
+
+
+//   @site-nav
+// --------------------------------------------------------
+//  Main Site Navigation
+// --------------------------------------------------------
+
+.site-nav {
+	display: inline-block;
+	height: 100%;
+	position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

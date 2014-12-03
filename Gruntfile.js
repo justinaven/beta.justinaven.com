@@ -17,7 +17,9 @@ module.exports = function(grunt) {
                 files: {
                     'js/global.js' : [
                     'js/scripts/logging.js',
-                    'js/scripts/menu.js'
+                    'js/scripts/search.js',
+                    'js/scripts/menu.js',
+                    'js/scripts/freewall.js'
                     ]
                 }
             },

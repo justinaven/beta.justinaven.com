@@ -17,7 +17,22 @@
     <script>window.jQuery || document.write('<script src="{{ baseurl }}vendor/jquery/dist/jquery.min.js"><\/script>')</script>
     <script src="{{ baseurl }}js/global.min.js"></script>
 
-
+<!--
+    <style>.grid__item{overflow:hidden; background: yellow; border:1px solid green;}</style>
+    <script>
+        
+      var wall = new freewall(".blog-posts");
+      wall.reset({
+        selector: '.grid__item',
+        animate: true,
+        cellW: 150,
+        cellH: 'auto',
+        onResize: function() {
+          wall.fitWidth();
+        }
+      });    
+  </script>
+-->
     {% if page.javascript %}<script src="{{ baseurl }}js/{{ page.javascript }}"></script>{% endif %}
 </body>
 </html>

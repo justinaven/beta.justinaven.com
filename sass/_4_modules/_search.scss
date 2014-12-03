@@ -1,0 +1,79 @@
+//
+//   @search
+// --------------------------------------------------------
+//  _5_sections/_search.scss
+// --------------------------------------------------------
+//
+//  Site-wide header
+//
+// --------------------------------------------------------
+
+.primary-search {
+	padding: 12px 0;
+	float: right;
+	form {
+		max-width: 230px;
+		padding-right: 30px;
+		position: relative;
+		white-space: nowrap;
+		transition: max-width .3s ease-in-out;
+		font-size: .01px;
+		line-height: 0;
+
+		display: block;
+		clear: both;
+		margin: 0 auto;
+		
+
+		.js & {
+			max-width: 29px; 
+			label {cursor: pointer;}
+
+			&.active {max-width: 230px;}
+		}
+	}
+	&:before {
+		content: '';
+		display: none;
+		height: 100%;
+		position: relative;
+		vertical-align: middle;
+		width: 0;
+	}
+
+	label {
+		background: transparent url(../img/search-icon.png) no-repeat right 0;
+		display: inline-block;
+		font-size: 14px;
+		line-height: 27px;
+		text-indent: 9999px;
+		width:30px;
+	}
+	input {
+		background: transparent;
+		border: none;
+		border-bottom: 3px solid color('silver');
+		color: color('silver');
+		font-size: 14px;
+		line-height: 20px;
+		padding: 0;
+		width: 100%;
+	}
+
+
+	@include media('screen and (min-width: 600px)', false) {
+		display:inline-block;
+		float:none;
+		padding: 0;
+		&:before {display: inline-block; }
+		form {
+			display: inline-block;
+			height:100%;
+		}
+		input,label {
+			font-size: 18px;
+			line-height: 27px;
+		}
+	}
+
+}
