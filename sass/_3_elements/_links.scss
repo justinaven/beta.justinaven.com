@@ -24,11 +24,12 @@
 // --------------------------------------------------------
 
 a {
+	text-decoration: none;
     transition: color .3s ease-in-out;
     transition: background .3s ease-in-out;
     &:link { color: color('orange-l'); }
     &:visited { color: color('orange'); }
-    &:hover { color: lighten(color('orange-l'),5%); }
+    &:hover { color: lighten(color('orange-l'),5%); text-decoration: underline;}
     &:active { color: color('orange-l'); }
 }
 

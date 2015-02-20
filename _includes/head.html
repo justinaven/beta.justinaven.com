@@ -27,12 +27,14 @@
         {% endif %}
     <![endif]-->
 
+        <link rel='stylesheet' href='{{ baseurl }}css/prism.css'>
     <!-- For all other browsers -->
     <!--[if gt IE 8]><!-->
         <link rel='stylesheet' href='{{ baseurl }}css/screen.css'>
         {% if page.css %}
             <link rel='stylesheet' href='{{ baseurl }}css/{{ page.css }}'>
         {% endif %}
+
     <!--<![endif]-->
 
 
@@ -50,13 +52,13 @@
     <![endif]-->
 
     <!-- Fonts -->
-    {%if site.typekit %}
+    <!-- {%if site.typekit %}
     <script src="//use.typekit.net/{{ site.typekit }}.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     {% endif %}
     {%if page.typekit %}
     <script src="//use.typekit.net/{{ page.typekit }}.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-    {% endif %}
+    {% endif %} -->
 </head>
 <body>

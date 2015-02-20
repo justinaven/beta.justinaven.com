@@ -40,9 +40,17 @@
 //
 // ----------------------------------------------------------
 
-ul,
-ol {
-  padding-left: 0;
-  margin-left: 0;
-  list-style-type: none;
+ul, ol { 
+	padding-bottom: $spacing-l;
+	ul, ol {padding-bottom: 0;} 
 }
+
+
+ol ol { list-style-type: lower-roman; 
+	ol { list-style-type: decimal; } 
+} 
+ 
+
+
+
+

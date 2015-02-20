@@ -19,10 +19,12 @@
 .multimedia object,
 .multimedia video,
 .multimedia iframe {
-    @extend %cover;
-
+    // @extend %cover;
+    height: 100%;
     margin: 0 !important; // to overwrite margins that may be set in other stylesheets
     padding: 0;
+    position: absolute;
+    width: 100%
 }
 
 

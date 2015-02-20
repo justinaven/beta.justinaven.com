@@ -138,7 +138,7 @@ $push:                  false;
 $pull:                  false;
 
 $breakpoints: (
-    'medium' '(min-width: #{$bp-s})',
+    'medium' '(min-width: #{$bp-m})',
     'large' '(min-width: #{$bp-l})',
     'wide' '(min-width: #{$bp-xl})'
 );

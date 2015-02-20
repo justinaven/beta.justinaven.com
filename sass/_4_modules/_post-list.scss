@@ -1,0 +1,132 @@
+//
+//   @post-list
+// --------------------------------------------------------
+//  _4_modules/_post-list.scss
+// --------------------------------------------------------
+//
+//  main content
+//
+// --------------------------------------------------------
+
+.blog-posts {
+	.post-title {
+		@extend %text-l;
+		a {text-decoration: none;}
+	}
+	@extend %text-m;
+	.grid__item {
+		padding: 0 $spacing-l $spacing-l $spacing-l;
+	}
+	blockquote {
+		margin: 0;
+		width: 100%;
+	}
+	.quote a.post-type {
+		background: color('light-gray');
+		border-radius: 2px;
+		color: #0A101B;
+		display: inline-block;
+		font-size: 12px;
+		padding: 0px 5px;
+		text-decoration: none;
+		&:hover {
+			color: white;
+		}
+	}
+}
+.filtering {
+	color: color('orange');
+	margin-top: -18px;
+	margin-bottom: 24px;
+	padding-left: 0;
+	font-size: 14px;
+	h4 { 
+		display:inline-block; 
+		margin-right: 5px;
+	}
+	li {
+		display:inline-block;
+		padding: 3px 5px;
+		&:hover {
+			color: white;
+			cursor: pointer;
+		}
+		&:after {
+			color: color('orange');
+			content:'|';
+			display: inline-block;
+			right: -6px;
+			position: relative;
+			&:hover { cursor: default; }
+		}
+		&:last-child:after {display:none;}
+	}
+}
+.ext-blog-name {
+	color: rgba(color('light-gray'), .8);
+  	display: block;
+  	font-size: modular-scale(em($base-font-size),  -1, 1.333);
+  	margin-top: 0;
+}
+
+.type-image {
+	padding-bottom: $spacing-l;
+	> a { 
+		display: block;
+		height:auto;
+		overflow: hidden;
+		padding-bottom: 0;
+		position: relative;
+	}
+	h3.post-title {
+		background: rgba(color('silver'), .8);
+		color: color('orange');
+		height:100%;
+		min-height: 2*$spacing-xxl;
+		padding: $spacing-m;
+		text-align: left;
+		width: 100%;
+		white-space: nowrap;
+		span {
+			display: inline-block;
+			white-space: normal;
+			vertical-align: middle;
+		}
+		&:before {
+			content:'';
+			display: inline-block;
+			height: 100%;
+			position: relative;
+			vertical-align: middle;
+			width: 0;
+		}
+	}
+	img {
+		max-width: 200%;
+		min-height: 100%;
+		min-width: 100%;
+		position: absolute;
+		width: auto;
+	}
+}
+.blog-images {
+	.type-image {
+		> a { 
+			height:0;
+			padding-bottom: 100%;
+		}
+		h3.post-title {
+			opacity: 0;
+			font-size: 16px;
+			line-height: 20px;
+			position: absolute;
+			text-align: center;
+			transition: opacity .3s ease-in-out;
+		}
+		&:hover {
+			.post-title {
+				opacity: 1;
+			}
+		}
+	}
+}

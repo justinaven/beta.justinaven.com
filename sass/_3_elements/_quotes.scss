@@ -21,12 +21,27 @@
 // --------------------------------------------------------
 
 blockquote {
-
-  p:last-of-type { // Remove bottom margin from last paragraph
-   margin-bottom: 0;
+  border-left: 7px solid color('blue-gray');
+  margin: 0 5% $spacing-l;
+  padding: .25em 0 .25em 1.5em;
+  width: 90%;
+  .quote-src {
+  	display: block;
+  	font-size: modular-scale(em($base-font-size),  -1, 1.333);
+  	margin-top: $spacing-s;
+  	margin-bottom: 0;
+  	text-align: right;
+  	text-transform: uppercase;
+  }
+  span.q-mark {
+  	display: inline-block;
+  	font-size: modular-scale(em($base-font-size),  1, 1.333);
+  	position: relative;
+  	line-height: 0;
+  	&.start {left:-.25em;}
+  	&.end {right:-.25em;}
   }
 }
-
 
 
 

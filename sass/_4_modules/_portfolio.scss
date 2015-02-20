@@ -1,0 +1,36 @@
+//
+//   @portfolio
+// --------------------------------------------------------
+//  _4_modules/_portfolio.scss
+// --------------------------------------------------------
+//
+//  main content
+//
+// --------------------------------------------------------
+
+
+
+.example .grid {
+	margin-bottom: $spacing-l;
+	.img-wrap {
+		margin: 0 auto;
+		text-align: center;
+	}
+	.grid__item.one-whole:first-child {
+		margin-bottom: $spacing-l;
+		@include media('screen and (max-width: #{$bp-m})',true) {max-height: 450px;}
+		
+		overflow-y: auto;
+	}
+	img {
+		max-width: 100%;
+		width: auto;
+	}
+	@include media('screen and (min-width: #{$bp-xs})',true) {
+		height: 0;
+		margin-bottom: $spacing-l;
+		overflow: hidden;
+		padding-bottom: 48.125%;
+		position: relative;
+	}
+}

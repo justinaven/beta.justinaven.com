@@ -1,0 +1,50 @@
+//
+//    @single-post
+// --------------------------------------------------------
+//  _4_modules/_single-post.scss
+// --------------------------------------------------------
+//
+
+.single-post { 
+	img {
+		padding-bottom: $spacing-m;
+		&.left { float: left; }
+		&.right { float: right; }
+		&.center { display: block; margin-left: auto; margin-right: auto; }
+
+		@include media('screen and (min-width: #{$bp-s})') {
+			padding-bottom: $spacing-l;
+
+			&.small { 
+				padding-right: $spacing-l;
+				width: 50%; 
+				&.right {
+					padding-left: $spacing-l;
+					padding-right: 0;
+				}
+				&.center {padding-right: 0;}
+
+			}
+
+			&.medium { 
+				padding-right: $spacing-l;
+				width: 60%; 
+				&.right {
+					padding-left: $spacing-l;
+					padding-right: 0;
+				}
+			}
+		}
+		@include media('screen and (min-width: #{$bp-m})') {
+			&.small { width: 33.333%; }
+			&.medium { width: 50%; }
+		}
+	}
+}
+
+pre {
+	clear: both;
+	padding: $spacing-l;
+	width: 100%;
+	&[class*="language-"] { margin: $spacing-l 0; }
+}

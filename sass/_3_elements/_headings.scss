@@ -18,33 +18,33 @@
 //  csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css
 //
 // --------------------------------------------------------
+h1,h2,h3,h4,h5,h6 {
+  font-family: $head-font;
+  font-weight: bold;
+}
 
 h1 {
-  font-weight: normal;
+  color: color('light-gray');
   @extend %text-xxl;
 }
 
 h2 {
-  font-weight: normal;
+  color: color('light-gray');
   @extend %text-xl;
 }
 
 h3 {
-  font-weight: normal;
   @extend %text-l;
 }
 
 h4 {
-  font-weight: normal;
   @extend %text-m;
 }
 
 h5 {
-  font-weight: normal;
   @extend %text-s;
 }
 
 h6 {
-  font-weight: normal;
   @extend %text-xs;
 }

@@ -16,9 +16,29 @@
 section {
  	background: $body-color;
  	box-shadow: inset 0 0 3px rgba(0,0,0,.4);
- 	margin: $spacing-xl auto;
+ 	margin: $spacing-xl auto 0 auto ;
 	padding: $spacing-l 0; 
 	.post-title {
 		font-weight: bold;
 	}
+}
+
+.section-head {
+	margin-bottom: $spacing-l;
+
+	a.more-posts {
+		display: block;
+		float: right;
+		font-size: 14px;
+		line-height: 52px;
+		@extend %sans;
+		@include media('screen and (min-width: 480px)', $no-query-fallback: false) {
+         	font-size: 16px;
+     	}
+	}
+}
+
+
+.main-col-left {
+	padding-right: $spacing-xl;
 }

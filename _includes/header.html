@@ -11,7 +11,19 @@
             <!-- Main site nav -->
             <nav class="site-nav primary-nav">
                 <ul class="nav" role="navigation">
-                    <li><a class="active" href="#">Blog</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Blog</a>
+                        <ul class="nav-dropdown">
+                            <li class="has-dropdown">
+                                <a href="#">SYDGAFA</a>
+                                <ul class="nav-dropdown">
+                                    <li><a href="#">other</a></li>
+                                    <li><a href="#">stuff</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Front-end</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">Portfolio</a></li>
                 </ul>
             </nav>
@@ -20,7 +32,7 @@
             <div class="site-search primary-search">
                 <form>
                     <input id="search" name="search" type="text" placeholder="Search for stuff...">
-                    <label for="serach">Search</label>
+                    <label for="serach"><span>Search</span></label>
                 </form>
             </div>
         </div>
