@@ -6,6 +6,10 @@
 //
 
 .single-post { 
+	.post-meta {
+		color:color('light-gray');
+		margin-bottom: $spacing-m;
+	}
 	img {
 		padding-bottom: $spacing-m;
 		&.left { float: left; }
