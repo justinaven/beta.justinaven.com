@@ -1,0 +1,132 @@
+{#
+ # News index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/news is
+ # requested, because it is located at news/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_home_layout" %}
+{% set title = "Blog" %}
+
+{% block content %}
+    {% set body_test = entry.body|striptags %}
+    {% if body_test|length > 0 %}
+        <section>
+            <div class="container">
+                <h1>{{ entry.heading }}</h1>
+
+                <div>{{ entry.body }}</div>
+            </div>
+        </section>
+    {% endif %}
+
+
+{# Get the parameter (e.g. 'red,blue,black') #}
+{% set currentParam = craft.request.getParam('tag') %}
+
+{# Split the parameter string #}
+{% set arrCurrentParam = currentParam|split(',') %}
+
+{# Loop through tags to output the links #}
+{% for params in arrCurrentParam %}
+
+
+    <p>{{ params }}</p>
+
+{% endfor %}
+
+        <section>
+            <div class="container">
+                <div class="main-col-left grid__item  one-whole medium--two-thirds large--three-quarters wide--four-fifths">
+                    <h1 class="section-head">All Posts</h1>
+                    <div class="grid blog-posts"><!--
+                        {% set entries = craft.entries.section('blog').limit(12).find() %}
+                        {% if entries | length %}
+                            {% for entry in entries %}
+
+                {% switch entry.type %}
+
+                    {% case "quotes" %}
+                     --><div class="grid__item one-whole large--one-half wide--one-third {{entry.type}}">
+                            <blockquote>
+                                <span class="q-mark start">&#8220;</span>{{entry.body|striptags}}<span class="q-mark end">&#8221;</span>
+                                <p class="quote-src">&#8212; {{entry.quoteSource}}</p>
+                            </blockquote>
+                            <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>  
+                        </div><!--
+
+                    {% case "images" %}
+
+                            {% set assets = entry.postImage %}
+                            {% for image in assets %}
+                              {% if image.url|length > 0 %}
+                     --><div class="grid__item one-whole large--one-half wide--one-third {{entry.type}}">
+                            <a href="{{ entry.url }}" style="background:url({{image.url}}) no-repeat 50% 50%; background-size:cover;">
+                                <!--[if lte IE 8]><img src="{{image.url}}"/><![endif]-->
+                                <h3 class="post-title"><span>{{ entry.title }}</span></h3>
+                            </a>
+                            <a class="entry-type" href="">{{entry.type.name}}</a>
+                        </div><!--
+                              {% endif %}
+                            {% endfor %}
+
+
+                    {% case "links" %}
+
+                     --><div class="grid__item one-whole large--one-half wide--one-third {{entry.type}}">
+                            <h3 class="post-title">
+                                <a href="{{ entry.redirect }}" target="_blank" href="{{ entry.url }}">{{ entry.title }}</a>
+                            </h3>
+                            <h4 class="ext-blog-name">via <span>{{entry.quoteSource}}</span></h4>
+                            {% set test = entry.body|striptags %}
+                            {% set words = test|split(' ') %}
+                            <p class="blog-excerpt">{% for word in words[:25] %}
+                                {{ word }}{% endfor %} {% if words|length > 25 %}&#8230;{% endif %}</p> 
+                            <a class="entry-type" href="">{{entry.type.name}}</a>
+                        </div><!--
+
+
+                    {% default %}
+
+
+                     --><div class="grid__item one-whole large--one-half wide--one-third {{entry.type}}">
+
+                          <h3 class="post-title">
+                              <a href="{{ entry.url }}">{{ entry.title }}</a>
+                          </h3>
+                          {% set test = entry.body|striptags %}
+                          {% set words = test|split(' ') %}
+                          <p class="blog-excerpt">{% for word in words[:15] %}
+                              {{ word }}{% endfor %} {% if words|length > 15 %}&#8230;{% endif %}</p> 
+
+                          {% if entry.type == 'posts' %}
+                              <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">Text</a>
+                          {% elseif entry.type == 'videos' %}
+                              <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>
+                          {% endif %}
+
+                        </div><!--
+
+
+
+                      {% endswitch %}
+
+
+
+
+                        {% endfor %}           
+      {% endif %}--></div>
+                </div><!--
+             --><div class="sidebar right grid__item one-whole medium--one-third large--one-quarter wide--one-fifth">
+                    {% include ["includes/sidebar.html"] %}
+                </div>
+            </div>
+
+        </section>
+
+{% endblock %}

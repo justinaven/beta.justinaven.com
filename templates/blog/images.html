@@ -1,0 +1,68 @@
+{#
+ # News index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/news is
+ # requested, because it is located at news/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_home_layout" %}
+{% set title = "Blog" %}
+
+{% block content %}
+    {% set body_test = entry.body|striptags %}
+    {% if body_test|length > 0 %}
+        <section>
+            <div class="container">
+                <h1>{{ entry.heading }}</h1>
+
+                <div>{{ entry.body }}</div>
+            </div>
+        </section>
+    {% endif %}
+
+        <section>
+            <div class="container">
+                <div class="main-col-left grid__item  one-whole medium--two-thirds large--three-quarters wide--four-fifths">
+                    <h1 class="section-head">Images</h1>
+                    <div class="grid blog-images"><!--
+                        {% paginate craft.entries.section('blog').type('images').limit(12) as entriesOnPage %}
+                        {% if entriesOnPage | length %}
+                            {% for entry in entriesOnPage %}
+                                {% set assets = entry.postImage %}
+                                {% for image in assets %}
+                                  {% if image.url|length > 0 %}
+                             --><div class="grid__item one-whole large--one-half wide--one-third {{ entry.type }}">
+                                    <a href="{{ entry.url }}" style="background:url({{image.url}}) no-repeat 50% 50%; background-size:cover;">
+                                        <!--[if lte IE 8]><img src="{{image.url}}"/><![endif]-->
+                                        <h3 class="post-title"><span>{{ entry.title }}</span></h3>
+                                    </a>
+                                </div><!--
+                                  {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+                    -->{% if paginate.prevUrl %}
+                    <div class="pagination">
+                        <a class="paginate-link page-prev" href="{{ paginate.prevUrl }}">Previous Page</a>
+                        {% if paginate.nextUrl %}{% else %}</div>{% endif %}
+                    {% endif %}{% if paginate.nextUrl %}
+                        {% if paginate.prevUrl %}{% else %}<div class="pagination">{% endif %}
+                        <a class="paginate-link page-next" href="{{ paginate.nextUrl }}">Next Page</a>
+                    </div>
+                    {% endif %}{% endpaginate %}<!--
+                      --></div>
+                </div><!--
+             --><div class="sidebar right grid__item one-whole medium--one-third large--one-quarter wide--one-fifth">
+                    {% include ["includes/sidebar.html"] %}
+                </div>
+
+            </div>
+
+        </section>
+
+{% endblock %}

@@ -1,0 +1,119 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_home_layout" %}
+
+{% block content %}
+    {% set body_test = entry.body|striptags %}
+    {% if body_test|length > 0 %}
+
+    {% endif %}
+        <section>
+            <div class="container">
+                <h2 class="section-head">Stuff to Consume <a class="more-posts" href="/blog">All Posts</a></h2>
+                <div class="grid blog-posts"><!--
+                    {% set entries = craft.entries.section('blog').type('text', 'links', 'quotes', 'videos').limit(6).find() %}
+                    {% if entries | length %}
+                        {% for entry in entries %}
+
+                {% switch entry.type %}
+
+                    {% case "quotes" %}
+                     --><div class="grid__item one-whole large--one-half wide--one-third {{entry.type}}">
+                            <blockquote>
+                                <span class="q-mark start">&#8220;</span>{{entry.body|striptags}}<span class="q-mark end">&#8221;</span>
+                                <p class="quote-src">&#8212; {{entry.quoteSource}}</p>
+                            </blockquote>
+                            <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>  
+                        </div><!--
+
+                    {% case "links" %}
+
+                     --><div class="grid__item one-whole large--one-half wide--one-third {{entry.type}}">
+                            <h3 class="post-title">
+                                <a href="{{ entry.redirect }}" target="_blank" href="{{ entry.url }}">{{ entry.title }}</a>
+                            </h3>
+                            <h4 class="ext-blog-name">via <span>{{entry.quoteSource}}</span></h4>
+                            {% set test = entry.body|striptags %}
+                            {% set words = test|split(' ') %}
+                            <p class="blog-excerpt">{% for word in words[:25] %}
+                                {{ word }}{% endfor %} {% if words|length > 25 %}&#8230;{% endif %}</p> 
+                            <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>
+                        </div><!--
+
+                    {% default %}
+
+                     --><div class="grid__item one-whole large--one-half wide--one-third {{entry.type}}">
+
+                          <h3 class="post-title">
+                              <a href="{{ entry.url }}">{{ entry.title }}</a>
+                          </h3>
+                          {% set test = entry.body|striptags %}
+                          {% set words = test|split(' ') %}
+                          <p class="blog-excerpt">{% for word in words[:15] %}
+                              {{ word }}{% endfor %} {% if words|length > 15 %}&#8230;{% endif %}</p> 
+
+                          {% if entry.type == 'text' %}
+                              <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">Text</a>
+                          {% elseif entry.type == 'videos' %}
+                              <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>
+                          {% endif %}
+
+                        </div><!--
+
+                      {% endswitch %}
+
+                    {% endfor %}
+                
+                {% endif %}--></div>
+            </div>
+
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-head">Images <a class="more-posts" href="{{ siteUrl }}blog/images">All Image Posts</a></h2>
+                <div class="grid blog-images"><!--
+                    {% set entries = craft.entries.section('blog').type('images').limit(12).find() %}
+
+                    {# If there are any entries, loop through them #}
+                    {% if entries | length %}
+
+                        {# For each entry we find, do this #}
+                        {% for entry in entries %}
+                            {% set assets = entry.postImage %}
+                            {% for image in assets %}
+                              {% if image.url|length > 0 %}
+                 --><div class="images grid__item one-whole medium--one-half large--one-third wide--one-quarter">
+                        <a href="{{ entry.url }}" style="background:url({{image.url}}) no-repeat 50% 50%; background-size:cover;">
+                            <!--[if lte IE 8]><img src="{{image.url}}"/><![endif]-->
+                            <h3 class="post-title"><span>{{ entry.title }}</span></h3>
+                        </a>
+                    </div><!--
+                              {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    
+                    {% endif %}-->
+                </div>
+            </div>
+
+        </section>
+
+{% endblock %}

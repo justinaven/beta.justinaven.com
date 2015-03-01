@@ -1,0 +1,75 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_home_layout" %}
+
+{% block content %}
+
+
+
+        <section>
+            <div class="container">
+                <div class="main-col-left grid__item  one-whole medium--two-thirds large--three-quarters wide--four-fifths">
+
+                {% switch entry.type %}
+
+
+                    {% case "quotes" %}
+                      <blockquote>
+                          <span class="q-mark start">&#8220;</span>{{entry.body|striptags}}<span class="q-mark end">&#8221;</span>
+                          <p class="quote-src">&#8212; {{entry.quoteSource}}</p>
+                      </blockquote>
+
+                    {% case "links" %}
+                      <h3 class="post-title">
+                          <a href="{{ entry.redirect }}" target="_blank" href="{{ entry.url }}">{{ entry.title }}</a>
+                      </h3>
+                      <h4 class="ext-blog-name">via <span>{{entry.quoteSource}}</span></h4>
+                      {% set test = entry.body|striptags %}
+                      {% set words = test|split(' ') %}
+                      <p class="blog-excerpt">{% for word in words[:25] %}
+                          {{ word }}{% endfor %} {% if words|length > 25 %}&#8230;{% endif %}</p> 
+                      <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>
+
+                    {% default %}
+                      <div class="single-post">
+                            {% set assets = entry.postImage %}
+                            {% for image in assets %}
+                            {% if image.url|length > 0 %}<img class="feature-image" src="{{ image.url }}">{% endif %}
+                            {% endfor %}
+                          <h1 class="post-title">{{ entry.title }}</h1>
+                          <h5 class="post-meta">
+                              <span class="post-date">{{ entry.postDate|date('M j, Y') }}</span>
+                          </h5>
+                          <div class="post-content">
+                            {{ entry.body }}
+                          </div>
+                      </div>
+
+                    {% endswitch %}
+
+
+                </div><!--
+             --><div class="sidebar right grid__item one-whole medium--one-third large--one-quarter wide--one-fifth">
+                    {% include ["includes/sidebar.html"] %}
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+{% endblock %}

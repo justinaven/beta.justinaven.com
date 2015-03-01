@@ -1,0 +1,42 @@
+
+                    <div class="categories-list">
+                        <h3 class="sub-head">Categories</h3>
+                        {% set categories = craft.categories.group('cats') %}
+                        <ul>
+                            {% for category in categories %}
+                            {% if category.level == 1 %}
+                            <li>
+                                <a href="{{ category.url }}">{{ category.title }}</a>
+                                {% if category.hasDescendants == true %}
+                                <ul>
+                                    {% set catChildren = category.getChildren %}
+                                    {% for catChild in catChildren %}
+                                    <li><a href="{{ catChild.url }}">{{ catChild.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="type-list">
+                        <h3 class="sub-head">Post Types</h3>
+                        <ul>
+                          <li><a href="{{ siteUrl }}blog/text">Text</a></li>
+                          <li><a href="{{ siteUrl }}blog/images">Images</a></li>
+                          <li><a href="{{ siteUrl }}blog/quotes">Quotes</a></li>
+                          <li><a href="{{ siteUrl }}blog/links">Links</a></li>
+                          <li><a href="{{ siteUrl }}blog/videos">Videos</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="tags-list">
+                        <h3 class="sub-head">Tags</h3>
+                        <ul>
+                            {% for tag in craft.tags.group('default') %}
+                            <li><a href="{{ url('blog/tags/'~tag.slug) }}">{{ tag.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>

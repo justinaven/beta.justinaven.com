@@ -1,0 +1,105 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_home_layout" %}
+
+{% block content %}
+    {% set body_test = entry.body|striptags %}
+    {% if body_test|length > 0 %}
+        <section>
+            <div class="container">
+                <h1>{{ entry.heading }}</h1>
+
+                <div>{{ entry.body }}</div>
+            </div>
+        </section>
+    {% endif %}
+
+        <section>
+            <div class="container">
+                <div class="main-col-left grid__item  one-whole medium--two-thirds large--three-quarters wide--four-fifths">
+                    <!-- <h2 class="section-head">Recent Posts</h2> -->
+                    <div class="grid blog-posts"><!--{% set category = craft.categories.slug('text, random, quotes, link') %}
+                        {% set entries = craft.entries.section('blog').relatedTo(category).limit(6).find() %}
+                        {% if entries | length %}
+                            {% for entry in entries %}
+                                {% set post_cat = '' %}
+                                {% for cat in entry.categories %}{% set post_cat = cat.slug %}
+                            {% endfor %}
+                     --><div class="grid__item one-whole large--one-half wide--one-third {{post_cat}} {% if post_cat == 'quotes' %}type-quote {% endif %}">
+                            {% if post_cat != 'quotes' %}
+                                <h3 class="post-title">
+                                    <a {% if post_cat == 'link' %}href="{{ entry.redirect }}" target="_blank"{% else %}href="{{ entry.url }}"{% endif %}>{{ entry.title }}</a>
+                                </h3>
+                                {% if post_cat == 'link' %}
+                                <h4 class="ext-blog-name">via <span>{{entry.quoteSource}}</span></h4>
+                                {% endif %}
+                                {% set test = entry.body|striptags %}
+                                {% set words = test|split(' ') %}
+                                <p class="blog-excerpt">{% for word in words[:15] %}
+                                    {{ word }}{% endfor %} {% if words|length > 15 %}&#8230;{% endif %}</p> 
+                            {% else %} 
+                                <blockquote>
+                                    <span class="q-mark start">&#8220;</span>{{entry.body|striptags}}<span class="q-mark end">&#8221;</span>
+                                    <p class="quote-src">&#8212; {{entry.quoteSource}}</p>
+                                </blockquote>
+                                <a class="post-type" href="">other quotes</a>
+                            {% endif %}             
+                        </div><!--
+                        {% endfor %}
+                    
+                    {% endif %}--></div>
+                </div><!--
+             --><div class="sidebar right grid__item one-whole medium--one-third large--one-quarter wide--one-fifth">
+                    <div class="categories-list">
+                        <h3 class="sub-head">Categories</h3>
+                        <ul>
+                          <li>
+                            <a href="#">Stuff You Won't Give a Flip About</a>
+                            <ul>
+                                <li><a href="#">Videos</a></li>
+                                <li><a href="#">Cool Stuff</a></li>
+                            </ul>
+                          </li>
+                          <li><a href="#">Front-End</a></li>
+                          <li><a href="#">Stuff I've Come across</a></li>
+                          <li><a href="#">Portfolio</a></li>
+                        </ul>
+                    </div>
+                    <div class="tags-list">
+                        <h3 class="sub-head">Tags</h3>
+                        <ul>
+                          <li><a href="#">SIDGAFA</a></li>
+                          <li><a href="#">css</a></li>
+                          <li><a href="#">transtions</a></li>
+                          <li><a href="#">video</a></li>
+                          <li><a href="#">drawings</a></li>
+                          <li><a href="#">comics</a></li>
+                          <li><a href="#">goats</a></li>
+                          <li><a href="#">photos</a></li>
+                          <li><a href="#">tech news</a></li>
+                          <li><a href="#">garden</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+{% endblock %}

@@ -1,0 +1,124 @@
+{#
+ # Home Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!doctype html>
+<!--[if (lte IE 8)&!(IEMobile)]><html class="no-js lte-ie8 lte-ie9" lang="en"><![endif]-->
+<!--[if (lte IE 9)&!(IEMobile)]><html class="no-js lte-ie9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+    
+    <!-- TITLE -->
+	<link rel="home" href="{{ siteUrl }}" />
+
+    <!--  Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+    
+    <!-- CSS -->
+    <!-- For old IE -->
+    <!--[if (lte IE 8)&!(IEMobile)]>
+        <link rel='stylesheet' href='{{ siteUrl }}css/lte-ie8.css'>
+    <![endif]-->
+
+    <!-- For all other browsers -->
+    <!--[if gt IE 8]><!-->
+        <link rel='stylesheet' href='{{ siteUrl }}/css/screen.css'>
+    <!--<![endif]-->
+
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- JS -->
+    <script>var b = document.documentElement; b.className = b.className.replace(/\bno-js\b/,'js'); b.setAttribute('data-useragent', navigator.userAgent); b.setAttribute("data-platform", navigator.platform );</script>
+
+    <!-- HTML5 Shiv for old IE -->
+    <!--[if (lte IE 8)&!(IEMobile)]>
+    <script type="text/javascript" src="{{ baseurl }}js/ie.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+    <!-- Site's Header-->
+    <header class="site-header" role="banner">
+        <div class="container">
+
+            <!-- Branding, can be a logo, img ect. -->
+            <a class="branding" href="{{ siteUrl }}">
+                <img src="img/logo.png" class="branding__logo" alt="Justin Aven">
+                <h1 class="branding__wordmark">{{ siteName }}</h1>
+            </a>
+
+            <!-- Main site nav  kjasd-->
+            <nav class="site-nav primary-nav">
+                {% set categories = craft.categories.group('cats') %}
+                <ul class="nav" role="navigation">
+                    <li{% if categories.hasDescendants == true %} class="has-dropdown"{% endif %}>
+                        <a href="{{ url('blog') }}" {% if craft.request.firstSegment == 'blog' %}class="active"{% endif %}>Blog</a>
+                        {% if categories.hasDescendants == true %}<ul class="nav-dropdown">{% endif %}
+                        {% for category in categories %}
+                            {% if category.level == 1 %}
+                            <li{% if category.hasDescendants == true %} class="has-dropdown"{% endif %}>
+                                <a href="{{ category.url }}">{{ category.title }}</a>
+                                {% if category.hasDescendants == true %}
+                                <ul class="nav-dropdown">
+                                    {% set catChildren = category.getChildren %}
+                                    {% for catChild in catChildren %}
+                                        <li><a href="{{ catChild.url }}">{{ catChild.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if categories.total() != 0 %}</ul>{% endif %}
+                    </li>
+                    <li><a href="#">Portfolio</a></li>
+                </ul>
+            </nav>
+
+
+            <!-- Site Search -->
+            <div class="site-search primary-search">
+                <form action="{{ url('search/results') }}">
+                    <input id="search" name="search" type="text" placeholder="Search for stuff...">
+                    <label for="serach"><span>Search</span></label>
+                </form>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Site's Main Content-->
+    <main class="site-main" role="main">
+		{% block content %}
+			<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+			<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+		{% endblock %}
+	</main>
+
+	<footer id="footer">
+		Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://buildwithcraft.com">Craft</a>
+	</footer>
+	
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ baseurl }}vendor/jquery/dist/jquery.min.js"><\/script>')</script>
+    <script src="{{ baseurl }}js/global.min.js"></script>
+
+</body>
+</html>
