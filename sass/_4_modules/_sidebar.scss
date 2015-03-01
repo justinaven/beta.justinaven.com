@@ -22,10 +22,10 @@
 	}
 }
 
-.categories-list {
+.categories-list, .type-list  {
 	// font-size: modular-scale(em($base-font-size),  -1, 1.25);
 	ul {
-		padding-left: $spacing-l;;
+		padding-left: $spacing-l;
 	// 	list-style-type: none;
 	// 	ul{
 	// 		padding-left: $spacing-l;

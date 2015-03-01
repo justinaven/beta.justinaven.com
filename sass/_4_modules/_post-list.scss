@@ -10,12 +10,13 @@
 
 .blog-posts {
 	.post-title {
+		margin-bottom: $spacing-s;
 		@extend %text-l;
 		a {text-decoration: none;}
 	}
 	@extend %text-m;
 	.grid__item {
-		padding: 0 $spacing-l $spacing-l $spacing-l;
+		padding: 0 $spacing-l $spacing-xl $spacing-l;
 	}
 	blockquote {
 		margin: 0;
@@ -27,11 +28,16 @@
 		color: #0A101B;
 		display: inline-block;
 		font-size: 12px;
+		margin-top: $spacing-s;
 		padding: 0px 5px;
 		text-decoration: none;
 		&:hover {
 			color: white;
 		}
+	}
+	.blog-excerpt {
+		margin-bottom: 0; 
+		margin-top: $spacing-s;
 	}
 }
 .filtering {
@@ -66,7 +72,7 @@
 	color: rgba(color('light-gray'), .8);
   	display: block;
   	font-size: modular-scale(em($base-font-size),  -1, 1.333);
-  	margin-top: 0;
+  	margin-top: -5px;
 }
 
 .images {
@@ -82,11 +88,14 @@
 		background: rgba(color('silver'), .8);
 		color: color('orange');
 		height:100%;
-		min-height: 2*$spacing-xxl;
+		min-height: 2.5*$spacing-xxl;
+		margin-bottom: 0;
+		opacity: 0;
 		padding: $spacing-m;
 		text-align: left;
 		width: 100%;
 		white-space: nowrap;
+		transition: opacity .3s ease-in-out;
 		span {
 			display: inline-block;
 			white-space: normal;
@@ -108,6 +117,11 @@
 		position: absolute;
 		width: auto;
 	}
+	&:hover {
+		.post-title {
+			opacity: 1;
+		}
+	}
 }
 .blog-images {
 	.images {
@@ -116,17 +130,10 @@
 			padding-bottom: 100%;
 		}
 		h3.post-title {
-			opacity: 0;
 			font-size: 16px;
 			line-height: 20px;
 			position: absolute;
 			text-align: center;
-			transition: opacity .3s ease-in-out;
-		}
-		&:hover {
-			.post-title {
-				opacity: 1;
-			}
 		}
 	}
 }
