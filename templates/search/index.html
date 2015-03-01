@@ -1,0 +1,52 @@
+{#
+ # 404 template
+ # ------------
+ #
+ # This template is loaded whenever Craft cannot figure out how to
+ # respond to an incoming request. No setup is involved to get your
+ # 404 page working; you just need to call it 404.html and put it
+ # at the root of your craft/templates/ folder.
+ #
+ # You can also create 400.html, 403.html, 500.html, and 503.html
+ # templates if you’d like. If Craft can’t find an error template
+ # to match the error code, it will just use the one in
+ # craft/app/templates/ instead.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_home_layout" %}
+{% set title = "Search Results" %}
+
+{% block content %}
+
+    <section class="a-404">
+        <div class="container">
+            <div class="grid">
+                <div class="main-col-left grid__item  one-whole medium--two-thirds large--three-quarters wide--four-fifths">
+                    <h1 class="section-head">Search Results</h1>
+
+						{% set query = craft.request.getParam('search') %}
+						{% set entries = craft.entries.search(query).order('score') %}
+
+						{% if entries|length %}
+						    <p>{{ entries|length }} results for "{{ query }}":</p>
+
+						    <ul>
+						        {% for entry in entries %}
+						            <li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+						        {% endfor %}
+						    </ul>
+						{% else %}
+						    <p>Sorry, but your search for <strong>“{{ query }}”</strong> didn’t return any results.</p>
+						{% endif %}
+                </div><!--
+             --><div class="sidebar right grid__item one-whole medium--one-third large--one-quarter wide--one-fifth">
+                    {% include ["includes/sidebar.html"] %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

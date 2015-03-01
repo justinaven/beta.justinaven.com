@@ -21,7 +21,7 @@
 
                     {% set category = craft.categories.slug(categorySlug) %}
                 <div class="main-col-left grid__item  one-whole medium--two-thirds large--three-quarters wide--four-fifths">
-                    <h2 class="section-head">{{ category[0] }}</h2>
+                    <h1 class="section-head">{{ category[0] }}</h1>
                     <div class="grid blog-posts"><!--
                         {% paginate craft.entries.section('blog').relatedTo(category).limit(12) as entriesOnPage %}
                         {% if entriesOnPage | length %}

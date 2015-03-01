@@ -79,11 +79,7 @@
                           <p class="blog-excerpt">{% for word in words[:15] %}
                               {{ word }}{% endfor %} {% if words|length > 15 %}&#8230;{% endif %}</p> 
 
-                          {% if entry.type == 'posts' %}
-                              <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">Text</a>
-                          {% elseif entry.type == 'videos' %}
                               <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>
-                          {% endif %}
 
                         </div><!--
 

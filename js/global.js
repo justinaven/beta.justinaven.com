@@ -4,9 +4,9 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
 //  search open button
 // --------------------------------------------------------
  
- $('.site-search label').on('click', function(){
+$('.site-search label').on('click', function(){
  	$(this).closest('form').toggleClass('active');
- })
+});
 // --------------------------------------------------------
 //  search open button
 // --------------------------------------------------------

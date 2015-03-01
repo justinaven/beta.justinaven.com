@@ -23,8 +23,8 @@
             <div class="container">
                 <div class="main-col-left grid__item  one-whole medium--two-thirds large--three-quarters wide--four-fifths">
 
-                {% switch entry.type %}
-
+                  <div class="single-post">
+                  {% switch entry.type %}
 
                     {% case "quotes" %}
                       <blockquote>
@@ -41,25 +41,60 @@
                       {% set words = test|split(' ') %}
                       <p class="blog-excerpt">{% for word in words[:25] %}
                           {{ word }}{% endfor %} {% if words|length > 25 %}&#8230;{% endif %}</p> 
-                      <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>
 
                     {% default %}
-                      <div class="single-post">
-                            {% set assets = entry.postImage %}
-                            {% for image in assets %}
-                            {% if image.url|length > 0 %}<img class="feature-image" src="{{ image.url }}">{% endif %}
-                            {% endfor %}
-                          <h1 class="post-title">{{ entry.title }}</h1>
-                          <h5 class="post-meta">
-                              <span class="post-date">{{ entry.postDate|date('M j, Y') }}</span>
-                          </h5>
-                          <div class="post-content">
-                            {{ entry.body }}
-                          </div>
+                      {% set assets = entry.postImage %}
+                      {% for image in assets %}
+                      {% if image.url|length > 0 %}<img class="feature-image" src="{{ image.url }}">{% endif %}
+                      {% endfor %}
+                      <h1 class="post-title">{{ entry.title }}</h1>
+                      <h5 class="post-meta">
+                          <span class="post-date">{{ entry.postDate|date('M j, Y') }}</span>
+                      </h5>
+                      <div class="post-content">
+                        {{ entry.body }}
                       </div>
 
                     {% endswitch %}
 
+                      <div class="post-filing">
+
+                        
+                        <p> <span>Entry Type: </span>
+                          <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>
+                        </p>
+
+
+                        {% set tags = entry.tags %}
+                        {% set tag_count = 0%}
+                        {% if tags|length%}
+                        <p> 
+                          <span>Tagged with: </span>
+                          {% for tag in tags %}
+                            {% if tag_count > 0 %},&nbsp;{%endif%}
+                            <a class="entry-type" href="{{ siteUrl }}blog/tags/{{ tag.slug }}">{{tag.title}}</a>
+                            {% set tag_count = tag_count + 1 %}
+                          {% endfor %}
+                        </p>
+                        {%endif%}
+
+                        {% set cats = entry.categories %}
+                        {% set cat_count = 0%}
+                        {% if cats|length%}
+                        <p> 
+                          <span>Filed Under: </span>
+                          {% for cat in cats %}
+                            {% if cat_count > 0 %},&nbsp;{%endif%}
+                            <a class="entry-type" href="{{ siteUrl }}blog/cats/{{ cat.slug }}">{{cat.title}}</a>
+                            {% set cat_count = cat_count + 1 %}
+                          {% endfor %}
+                        </p>
+                        {%endif%}
+                        
+                      </div>
+
+
+                    </div>
 
                 </div><!--
              --><div class="sidebar right grid__item one-whole medium--one-third large--one-quarter wide--one-fifth">

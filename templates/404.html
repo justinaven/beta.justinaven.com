@@ -16,11 +16,24 @@
  # http://buildwithcraft.com/docs/routing
  #}
 
-{% extends "_layout" %}
+{% extends "_home_layout" %}
 {% set title = "404" %}
 
 {% block content %}
-	<h1>Ohhhh... Wow. This is probably not what you were looking for.</h1>
 
-	<p>Sorry. Try going back a page or possibly head back to the <a href="{{ siteUrl }}">homepage</a>.</p>
+    <section class="a-404">
+        <div class="container">
+            <div class="grid">
+                <div class="grid__item one-whole push--medium--one-third medium--two-thirds push--large--one-third large--seven-twelfths">
+                    <h1>Ohhhh... Wow. 404.</h1>
+                    <p>This is probably not what you were looking for.</p>
+                    <p>Sorry. Try going back a page or possibly head back to the <a href="{{ siteUrl }}">homepage</a>.</p>
+                </div><!--
+             --><div class="grid__item one-whole pull--medium--two-thirds medium--one-third pull--large--one-half large--one-quarter">
+                    <img src="/img/tom-404.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

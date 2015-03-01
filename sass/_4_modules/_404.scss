@@ -9,23 +9,23 @@
 // --------------------------------------------------------
 
 .a-404 {
-	overflow: hidden;
-	.grid__item { position: relative; }
+	// overflow: hidden;
+	// .grid__item { position: relative; }
 	.container {
-		max-width: $bp-m;
-		width: 80%;
+	// 	max-width: $bp-m;
+	// 	width: 80%;
 	}
 	h1 {
 		margin-bottom: $spacing-l;
 	}
-	p:last-child {
-		margin-bottom: 0;
-	}
+	// p:last-child {
+	// 	margin-bottom: 0;
+	// }
 	img {margin-top: $spacing-l;}
-	@include media('screen and (min-width: 480px)', false) {
-		.grid__item {right:66.666%;}
-		.grid__item:first-child {left:33.333%;right:auto}
-		img {margin-top: 0;}
-	}
+	// @include media('screen and (min-width: 480px)', false) {
+	// 	.grid__item {right:66.666%;}
+	// 	.grid__item:first-child {left:33.333%;right:auto}
+	// 	img {margin-top: 0;}
+	// }
 
 }

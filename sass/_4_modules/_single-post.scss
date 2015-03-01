@@ -10,6 +10,16 @@
 		color:color('light-gray');
 		margin-bottom: $spacing-m;
 	}
+	.post-filing {
+		> p {
+			margin-bottom: $spacing-s;
+			font-weight: bold;
+			font-size: 14px;
+			span {
+				margin-right: $spacing-s;
+			}
+		}
+	}
 	img {
 		padding-bottom: $spacing-m;
 		&.left { float: left; }
