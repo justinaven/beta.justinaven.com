@@ -44,8 +44,8 @@
                             {% for image in assets %}
                               {% if image.url|length > 0 %}
                      --><div class="grid__item one-whole large--one-half wide--one-third {{entry.type}}">
-                            <a href="{{ entry.url }}" style="background:url({{image.url}}) no-repeat 50% 50%; background-size:cover;">
-                                <!--[if lte IE 8]><img src="{{image.url}}"/><![endif]-->
+                            <a href="{{ entry.url }}" style="background:url({{image.getUrl('x500')}}) no-repeat 50% 50%; background-size:cover;">
+                                <!--[if lte IE 8]><img src="{{image.getUrl('x500')}}"/><![endif]-->
                                 <h3 class="post-title"><span>{{ entry.title }}</span></h3>
                             </a>
                             <a class="entry-type" href="{{ siteUrl }}blog/{{ entry.type }}">{{entry.type.name}}</a>

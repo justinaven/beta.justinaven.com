@@ -22,23 +22,8 @@
 {% block content %}
     {% set body_test = entry.body|striptags %}
     {% if body_test|length > 0 %}
-        <section>
-            <div class="container">
-                <div>{{ entry.body }}</div>
-            </div>
-        </section>
+        
+                {{ entry.body }}
     {% endif %}
-
-                {% for block in entry.extraBody %}
-
-        <section>
-            <div class="container">
-                <h2 class="section-head">{{ block.extraBodySectionHead }}</h2>
-                <div class="section-text">{{ block.extraBodySectionText }}</div>
-            </div>
-        </section>
-
-                {% endfor %}
-
 
 {% endblock %}

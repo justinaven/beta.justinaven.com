@@ -37,8 +37,8 @@
 
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="shortcut icon" href="{{ siteUrl }}img/favicon.ico">
+    <link rel="apple-touch-icon" href="{{ siteUrl }}apple-touch-icon.png">
 
     <!-- JS -->
     <script>var b = document.documentElement; b.className = b.className.replace(/\bno-js\b/,'js'); b.setAttribute('data-useragent', navigator.userAgent); b.setAttribute("data-platform", navigator.platform );</script>
@@ -87,7 +87,14 @@
 
                         {% if categories.total() != 0 %}</ul>{% endif %}
                     </li>
-                    <li><a href="/portfolio">Portfolio</a></li>
+                    <li class="has-dropdown">
+                        <a href="/resume" {% if craft.request.firstSegment == 'resume' %}class="active"{% endif %}
+                                          {% if craft.request.firstSegment == 'portfolio' %}class="active"{% endif %}>Me</a>
+                        <ul class="nav-dropdown">
+                            <li><a href="/portfolio" {% if craft.request.firstSegment == 'portfolio' %}class="active"{% endif %}>Portfolio</a></li>
+                            <li><a href="/resume" {% if craft.request.firstSegment == 'resume' %}class="active"{% endif %}>Resum&#233;</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
 

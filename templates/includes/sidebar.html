@@ -35,7 +35,7 @@
                     <div class="tags-list">
                         <h3 class="sub-head">Tags</h3>
                         <ul>
-                            {% for tag in craft.tags.group('default') %}
+                            {% for tag in craft.tags.relatedTo(entries) %}
                             <li><a href="{{ url('blog/tags/'~tag.slug) }}">{{ tag.title }}</a></li>
                             {% endfor %}
                         </ul>
