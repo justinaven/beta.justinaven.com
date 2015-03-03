@@ -26,11 +26,13 @@
 		max-width: 100%;
 		width: auto;
 	}
-	@include media('screen and (min-width: #{$bp-xs})',true) {
+	@include media('screen and (min-width: #{$bp-m})',true) {
+		.img-wrap {overflow:hidden;}
 		height: 0;
 		margin-bottom: $spacing-l;
 		overflow: hidden;
 		padding-bottom: 48.125%;
 		position: relative;
+		width: 100%;
 	}
 }

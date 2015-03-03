@@ -46,7 +46,12 @@ $('.secondary-nav-button').on('click', function(){
 $('.secondary-nav .has-dropdown > a').each(function(){
 	var m_href = $(this).attr('href');
 	var m_text = $(this).text();
-	$(this).siblings('ul').prepend('<li class="parent_link"><a href="'+m_href+'">'+m_text+'</a></li>');
+
+	if(m_text!='Me'){
+		if(m_text=='Blog'){
+			$(this).siblings('ul').prepend('<li class="parent_link"><a href="'+m_href+'">All Posts</a></li>');
+		}
+	} 
 });
 
 $('.secondary-nav .has-dropdown > a').on('click', function(e){

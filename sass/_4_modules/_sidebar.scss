@@ -9,10 +9,11 @@
 // --------------------------------------------------------
 
 .sidebar {
+	@include media('screen and (max-width: #{$bp-m})',true) {margin-top: $spacing-xl;}
 	// border-left: 1px solid color('blue-gray');
 	// padding-left: $spacing-xl;
 	> div {
-		margin-bottom: $spacing-xl;
+		// margin-bottom: $spacing-xl;
 		.sub-head {
 			border-bottom: 1px solid color('blue-gray');
 			margin-bottom: $spacing-s;
