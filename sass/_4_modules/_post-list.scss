@@ -125,6 +125,11 @@
 }
 .blog-images {
 	.images {
+		@include media('screen and (max-width: #{$bp-m})', true) {
+			width: calc(100% + 4rem);
+			margin-left: calc(-2rem);
+			padding-bottom: calc(0rem) !important;
+		}
 		> a { 
 			height:0;
 			padding-bottom: 100%;

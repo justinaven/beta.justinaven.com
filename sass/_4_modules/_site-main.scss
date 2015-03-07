@@ -38,7 +38,19 @@ section {
 	}
 }
 
+.site-main {
+	.feature-image, 
+	// .post-content img, 
+	.post-content pre {
+		@include media('screen and (max-width: #{$bp-m})', true) {
+			width: calc(100% + 4rem);
+			margin-left: calc(-2rem);
+			max-width: none;
+			position:relative;
+		}
+	}
+}
 
 .main-col-left {
-	padding-right: $spacing-xl;
+	// padding-right: $spacing-xl;
 }
