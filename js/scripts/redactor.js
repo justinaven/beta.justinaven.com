@@ -297,10 +297,17 @@
 				delete_head: 'Delete Head',
 				title: 'Title',
 				image_position: 'Position',
+				image_classes: 'Image Class',
 				none: 'None',
 				left: 'Left',
 				right: 'Right',
 				center: 'Center',
+				left_s: 'Left Small',
+				right_s: 'Right Small',
+				center_s: 'Center Small',
+				left_m: 'Left Medium',
+				right_m: 'Right Medium',
+				center_m: 'Center Medium',
 				image_web_link: 'Image Web Link',
 				text: 'Text',
 				mailto: 'Email',
@@ -3141,7 +3148,10 @@
 					else
 					{
 						var floatValue = ($image.css('display') == 'block' && $image.css('float') == 'none') ? 'center' : $image.css('float');
+						// var classValue = ($image.attr('class') == '') ? 'center' : $image.css('float');
 						$('#redactor-image-align').val(floatValue);
+						// $('#redactor-image-align-class').val(classValue);
+					// console.log(floatValue43);
 					}
 
 					this.modal.show();
@@ -3150,29 +3160,66 @@
 				setFloating: function($image)
 				{
 					var floating = $('#redactor-image-align').val();
+					var classes = $('#redactor-image-align-class').val();
+					 console.log('test = '+classes);
 
 					var imageFloat = '';
 					var imageDisplay = '';
 					var imageMargin = '';
+					var imageClasses = '';
 
-					switch (floating)
+					// switch (floating)
+					// {
+					// 	case 'left':
+					// 		imageFloat = 'left';
+					// 		imageMargin = '0 ' + this.opts.imageFloatMargin + ' ' + this.opts.imageFloatMargin + ' 0';
+					// 	break;
+					// 	case 'right':
+					// 		imageFloat = 'right';
+					// 		imageMargin = '0 0 ' + this.opts.imageFloatMargin + ' ' + this.opts.imageFloatMargin;
+					// 	break;
+					// 	case 'center':
+					// 		imageDisplay = 'block';
+					// 		imageMargin = 'auto';
+					// 	break;
+					// }
+					switch (classes)
 					{
 						case 'left':
-							imageFloat = 'left';
-							imageMargin = '0 ' + this.opts.imageFloatMargin + ' ' + this.opts.imageFloatMargin + ' 0';
+							imageClasses = 'left';
 						break;
 						case 'right':
-							imageFloat = 'right';
-							imageMargin = '0 0 ' + this.opts.imageFloatMargin + ' ' + this.opts.imageFloatMargin;
+							imageClasses = 'right';
 						break;
 						case 'center':
-							imageDisplay = 'block';
-							imageMargin = 'auto';
+							imageClasses = 'center';
 						break;
+						case 'left small':
+							imageClasses = 'left small';
+						break;
+						case 'right small':
+							imageClasses = 'right small';
+						break;
+						case 'center small':
+							imageClasses = 'center small';
+						break;
+						case 'left medium':
+							imageClasses = 'left medium';
+						break;
+						case 'right medium':
+							imageClasses = 'right medium';
+						break;
+						case 'center medium':
+							imageClasses = 'center medium';
+						break;
+						default:
+							imageClasses = '';
 					}
 
 					$image.css({ 'float': imageFloat, display: imageDisplay, margin: imageMargin });
 					$image.attr('rel', $image.attr('style'));
+					console.log('hey');
+					$image.attr('class', imageClasses);
 				},
 				update: function($image)
 				{
@@ -5483,6 +5530,19 @@
 								+ '<option value="left">' + this.lang.get('left') + '</option>'
 								+ '<option value="center">' + this.lang.get('center') + '</option>'
 								+ '<option value="right">' + this.lang.get('right') + '</option>'
+							+ '</select>'
+							+ '<label class="redactor-image-position-option-class">' + this.lang.get('image_classes') + '</label>'
+							+ '<select class="redactor-image-position-option-class" id="redactor-image-align-class">'
+								+ '<option value="">' + this.lang.get('none') + '</option>'
+								+ '<option value="left">' + this.lang.get('left') + '</option>'
+								+ '<option value="center">' + this.lang.get('center') + '</option>'
+								+ '<option value="right">' + this.lang.get('right') + '</option>'
+								+ '<option value="left small">' + this.lang.get('left_s') + '</option>'
+								+ '<option value="center small">' + this.lang.get('center_s') + '</option>'
+								+ '<option value="right small">' + this.lang.get('right_s') + '</option>'
+								+ '<option value="left medium">' + this.lang.get('left_m') + '</option>'
+								+ '<option value="center medium">' + this.lang.get('center_m') + '</option>'
+								+ '<option value="right medium">' + this.lang.get('right_m') + '</option>'
 							+ '</select>'
 						+ '</section>',
 
