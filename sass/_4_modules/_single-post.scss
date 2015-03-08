@@ -55,7 +55,7 @@
 		}
 		@include media('screen and (max-width: #{$bp-m})') {
 			&.small { margin-left:0; }
-			&.medium { margin-left:0; }
+			// &.medium { margin-left:0; }
 		}
 	}
 }
