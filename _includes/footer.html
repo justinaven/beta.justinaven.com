@@ -4,10 +4,10 @@
 
         <nav class="site-nav--footer ">
           <ul class="nav--inline" role="navigation">
-            <li class="tw"><a href="http://twitter.com/justinaven">Twitter</a></li>
-            <li class="insta"><a href="http://instagram.com/javen">Instagram</a></li>
+            <li class="twitter"><a href="http://twitter.com/justinaven"><span>Twitter</span></a></li>
+            <li class="instagram"><a href="http://instagram.com/javen"><span>Instagram</span></a></li>
             <li class="craft"><a href="http://buildwithcraft.com/">Built with <span>Craft</span></a></li>
-            <!-- <li class="gl"><a href="#">Guerilla Labs</a></li> -->
+            <!-- <li class="gl"><a href="#"><span>Guerilla Labs</span></a></li> -->
           </ul>
         </nav>
 
@@ -21,7 +21,7 @@
 <!--
     <style>.grid__item{overflow:hidden; background: yellow; border:1px solid green;}</style>
     <script>
-        
+
       var wall = new freewall(".blog-posts");
       wall.reset({
         selector: '.grid__item',
@@ -31,11 +31,11 @@
         onResize: function() {
           wall.fitWidth();
         }
-      });    
+      });
   </script>
 -->
     {% if page.javascript %}<script src="{{ baseurl }}js/{{ page.javascript }}"></script>{% endif %}
-    
+
     <script src="{{ baseurl }}js/scripts/prism.js"></script>
 </body>
 </html>

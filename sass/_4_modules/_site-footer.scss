@@ -12,39 +12,39 @@
 // --------------------------------------------------------
 
 .site-footer {
-	.gl { 
+	li { padding:0; }
+	.twitter, .instagram {
+		a {
+			display: inline-block;
+			background: url(/img/tw_logo.png) no-repeat center center;
+			background-size: contain;
+			margin-top: $spacing-m;
+			text-indent: -9999px;
+			width: 37px;
+		}
+	}
+	 .instagram a {
+		background-image: url(/img/instagram_logo.png);
+	 }
+	.gl {
 		background: url(/img/gl_logo.svg) no-repeat center center;
 		background-size: contain;
 		margin-top: $spacing-m;
 	 	text-indent: -9999px;
 		width: 180px;
 	 }
-	 .insta {
-		background: url(/img/instagram_logo.png) no-repeat center center;
-		background-size: contain;
-		margin-top: $spacing-m;
-		margin-left: 10px;
-	 	text-indent: -9999px;
-		width: 30px;
-	 }
 	.craft {
 		a {color: #fff;}
-		span { 
+		span {
 			display: inline-block;
 			background: url(/img/craft_logo.png) no-repeat center center;
 			background-size: contain;
-			margin-left: 5px;
+			margin-left:10px;
 			margin-top: $spacing-m;
 	 		text-indent: -9999px;
 			width: 50px;
 		}
 	 }
-	 .tw {
-		text-indent: -9999px;
-		background: url(/img/tw_logo.png) no-repeat center center;
-		background-size: contain;
-		margin-top: $spacing-m;
-		width: 37px;}
 }
 
 
