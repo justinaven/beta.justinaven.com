@@ -44,15 +44,15 @@
                           {{ word }}{% endfor %} {% if words|length > 25 %}&#8230;{% endif %}</p> 
 
                     {% default %}
-                      {% set assets = entry.postImage %}
-                      {% for image in assets %}
-                      {% if image.url|length > 0 %}<img class="feature-image" src="{{ image.getUrl('x1200') }}">{% endif %}
-                      {% endfor %}
                       <h1 class="post-title">{{ entry.title }}</h1>
                       <h5 class="post-meta">
                           <span class="post-date">{{ entry.postDate|date('M j, Y') }}</span>
                       </h5>
-                      <div class="post-content">
+                      {% set assets = entry.postImage %}
+                      {% for image in assets %}
+                      {% if image.url|length > 0 %}<img class="feature-image" src="{{ image.getUrl('x1200') }}">{% endif %}
+                      {% endfor %}
+                      <div class="post-content clearfix">
                         {{ entry.body }}
                       </div>
 
