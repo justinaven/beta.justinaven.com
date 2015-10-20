@@ -17,13 +17,11 @@
 	<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-    
+
     <!-- TITLE -->
 	<link rel="home" href="{{ siteUrl }}" />
 
-    <!--  Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
-    
+
     <!-- CSS -->
     <!-- For old IE -->
     <!--[if (lte IE 8)&!(IEMobile)]>
@@ -33,6 +31,7 @@
     <!-- For all other browsers -->
     <!--[if gt IE 8]><!-->
         <link rel='stylesheet' href='{{ siteUrl }}css/screen.css'>
+        <link rel='stylesheet' href='{{ siteUrl }}css/prism.css'>
     <!--<![endif]-->
 
 
@@ -132,9 +131,13 @@
 		<p class="copyright">Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved</p> <!-- •  Built with <a href="http://buildwithcraft.com">Craft</a> -->
         </div>
 	</footer>
-	
+
+    <!--  Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ siteUrl }}vendor/jquery/dist/jquery.min.js"><\/script>')</script>
+    <script src="{{ siteUrl }}js/scripts/prism.js"></script>
     <script src="{{ siteUrl }}js/global.min.js"></script>
 
 </body>
